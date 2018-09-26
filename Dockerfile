@@ -8,6 +8,8 @@ FROM ubuntu:18.04
 # 1.xx.x, stable or nightly ...
 ARG RUST_VER=nightly
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 RUN apt-get -y update \
  && apt-get -y install --no-install-recommends \
       sudo \
