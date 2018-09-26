@@ -8,6 +8,11 @@ FROM ubuntu:18.04
 # 1.xx.x, stable or nightly ...
 ARG RUST_VER=nightly
 
+LABEL name="rust" \
+      version="1" \
+      rust_version="${RUST_VER}" \
+      author="eldesh <nephits@gmail.com>"
+
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -y update \
