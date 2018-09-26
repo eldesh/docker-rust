@@ -1,3 +1,4 @@
+![rust logo][logo]
 
 # Docker/Rust
 
