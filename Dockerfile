@@ -42,7 +42,8 @@ ENV HOME=/home/rust
 ENV PATH $PATH:$HOME/.cargo/bin
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain ${RUST_VER} \
- && rustup component add rustfmt-preview
+ && rustup component add rustfmt-preview \
+ && sudo chown -R rust:rust `pwd`
 
 CMD ["bash"]
 
