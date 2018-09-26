@@ -6,7 +6,7 @@ FROM ubuntu:18.04
 
 # toolchain choice
 # 1.xx.x, stable or nightly ...
-ARG RUST_VER=nightly
+ARG RUST_VER=1.25.0
 
 LABEL name="rust" \
       version="1" \
