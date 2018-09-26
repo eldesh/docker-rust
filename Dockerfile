@@ -8,6 +8,19 @@ FROM ubuntu:18.04
 # 1.xx.x, stable or nightly ...
 ARG RUST_VER=nightly
 
+RUN apt-get -y update \
+ && apt-get -y install --no-install-recommends \
+      sudo \
+      curl \
+      ca-certificates \
+      gcc \
+      libc6-dev \
+      pkg-config \
+      git \
+      openssh-client \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+
 # setup the user *rust:rust(1000:1000)*
 RUN groupadd --gid 1000 rust \
  && useradd --create-home --shell /usr/bin/bash \
@@ -19,22 +32,10 @@ RUN groupadd --gid 1000 rust \
 USER rust
 WORKDIR /home/rust/source
 ENV HOME=/home/rust
-ENV PATH $PATH:/root/.cargo/bin
+ENV PATH $PATH:$HOME/.cargo/bin
 
-RUN apt-get -y update\
- && apt-get -y install --no-install-recommends \
-      curl \
-      ca-certificates \
-      gcc \
-      libc6-dev \
-      pkg-config \
-      git \
-      openssh-client \
- && curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain ${RUST_VER} \
- && rustup component add rustfmt-preview \
- && mkdir source \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain ${RUST_VER} \
+ && rustup component add rustfmt-preview
 
 CMD ["bash"]
 
