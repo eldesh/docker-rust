@@ -2,7 +2,7 @@
 # A Docker image for Rust environment
 # 
 
-FROM ubuntu:18.04
+FROM debian:jessie-20180831
 
 # toolchain choice
 # 1.xx.x, stable or nightly ...
