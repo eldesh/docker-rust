@@ -26,25 +26,30 @@ RUN apt-get -y update \
       pkg-config \
       git \
       openssh-client \
- && apt-get clean \
- && rm -rf /var/lib/apt/lists/*
-
-# setup the user *rust:rust(1000:1000)*
-RUN groupadd --gid 1000 rust \
- && useradd --create-home --shell /usr/bin/bash \
+ # setup the user *rust:rust(1000:1000)*
+ && groupadd --gid 1000 rust \
+ && useradd --create-home --shell /bin/bash \
       --groups sudo --uid 1000 --gid 1000 rust \
  && echo "rust:rust" | chpasswd \
- && echo 'rust ALL=(ALL:ALL) NOPASSWD:ALL' > /etc/sudoers.d/rust
+ && echo 'rust ALL=(ALL:ALL) NOPASSWD:ALL' > /etc/sudoers.d/rust \
+ # install rust
+ && curl https://sh.rustup.rs -sSf | sudo -H -g rust -u rust sh -s -- -y --default-toolchain ${RUST_VER} \
+ && sudo -H -g rust -u rust -i rustup component add rustfmt-preview \
+ && sudo -H -g rust -u rust -i mkdir source \
+ # cleanup
+ && apt-get remove -y \
+      pkg-config \
+      libc6-dev \
+      gcc \
+ && apt-get autoremove -y \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists \
+ && rm -rf /var/cache/apt/archives
 
 # switch user to rust
 USER rust
 WORKDIR /home/rust/source
-ENV HOME=/home/rust
 ENV PATH $PATH:$HOME/.cargo/bin
-
-RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain ${RUST_VER} \
- && rustup component add rustfmt-preview \
- && sudo chown -R rust:rust `pwd`
 
 CMD ["bash"]
 
