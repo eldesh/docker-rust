@@ -16,14 +16,11 @@ LABEL name="rust" \
 ENV OS_VERSION=jessie-20180831
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get -y update \
- && apt-get -y install --no-install-recommends \
+RUN apt-get update -y \
+ && apt-get install -y --no-install-recommends \
       sudo \
       curl \
       ca-certificates \
-      gcc \
-      libc6-dev \
-      pkg-config \
       git \
       openssh-client \
  # setup the user *rust:rust(1000:1000)*
@@ -38,9 +35,6 @@ RUN apt-get -y update \
  && sudo -H -g rust -u rust -i mkdir source \
  # cleanup
  && apt-get remove -y \
-      pkg-config \
-      libc6-dev \
-      gcc \
  && apt-get autoremove -y \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists \
