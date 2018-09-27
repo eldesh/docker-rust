@@ -26,6 +26,10 @@ And this user is belong to *sudoers*, so you have permissions to be able to exec
 - *$HOME* is set to `/home/rust`
 - *$PWD* is `/home/rust/source` (default working directory)
 
+NOTICE:
+  `DEBIAN_FRONTEND=noninteractive` is set by default.
+  Then you run a container from this image interactively, confirmation messages are may be suppressed by default.
+
 
 ## Example
 
