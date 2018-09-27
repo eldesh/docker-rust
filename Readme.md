@@ -10,6 +10,11 @@
 This docker image provides **Rust** compiler environment on debian.
 
 
+## Base Image
+
+This docker images are built on **debian:jessie-20180831** .
+
+
 ## Environment
 
 Running a container created with this image without extra arguments,
@@ -39,6 +44,7 @@ This docker image series are tagged corresponds to the official rust toolchain n
 - latest(nightly)
 - stable
 - 1.25.0
+
 
 ## Links
 

@@ -13,6 +13,7 @@ LABEL name="rust" \
       rust_version="${RUST_VER}" \
       author="eldesh <nephits@gmail.com>"
 
+ENV OS_VERSION=jessie-20180831
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -y update \
