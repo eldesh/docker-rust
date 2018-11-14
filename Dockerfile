@@ -23,6 +23,9 @@ RUN apt-get update -y \
       ca-certificates \
       git \
       openssh-client \
+      gcc \
+      libc6-dev \
+      pkg-config \
  # setup the user *rust:rust(1000:1000)*
  && groupadd --gid 1000 rust \
  && useradd --create-home --shell /bin/bash \
