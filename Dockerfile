@@ -43,6 +43,7 @@ RUN apt-get update -y \
 # switch user to rust
 USER rust
 WORKDIR /home/rust/source
+ENV HOME /home/rust
 ENV PATH $PATH:$HOME/.cargo/bin
 
 CMD ["bash"]
