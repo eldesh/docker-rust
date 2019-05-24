@@ -2,7 +2,7 @@
 # A Docker image for Rust environment
 # 
 
-FROM debian:jessie-20180831
+FROM debian:jessie-20190506
 
 # toolchain choice
 # 1.xx.x, stable or nightly ...
@@ -13,7 +13,7 @@ LABEL name="rust" \
       rust_version="${RUST_VER}" \
       author="eldesh <nephits@gmail.com>"
 
-ENV OS_VERSION=jessie-20180831
+ENV OS_VERSION=jessie-20190506
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update -y \
