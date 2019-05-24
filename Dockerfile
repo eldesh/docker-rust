@@ -6,7 +6,7 @@ FROM debian:jessie-20180831
 
 # toolchain choice
 # 1.xx.x, stable or nightly ...
-ARG RUST_VER=1.26.0
+ARG RUST_VER=nightly
 
 LABEL name="rust" \
       version="1" \
