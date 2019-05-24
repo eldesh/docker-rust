@@ -12,7 +12,7 @@ This docker image provides **Rust** compiler environment on debian.
 
 ## Base Image
 
-This docker images are built on **debian:jessie-20180831** .
+This docker images are built on **debian:jessie-20190506** .
 
 
 ## Environment
