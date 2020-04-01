@@ -47,6 +47,7 @@ This docker image series are tagged corresponds to the official rust toolchain n
 
 - latest(nightly)
 - stable
+- 1.38.0
 - 1.37.0
 - 1.36.0
 - 1.35.0
